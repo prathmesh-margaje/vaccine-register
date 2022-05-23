@@ -1,0 +1,69 @@
+<h3>Add Id card</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label >Mobile No</label>
+      <input type="text" class="form-control" id="mobileno" required [(ngModel)]="registration.mobileno" name="mobileno">
+    </div>
+    <div class="form-group">
+      <label >Date of Registration</label>
+      <input type="date" class="form-control" id="dateofregistration" required [(ngModel)]="registration.dateofregistration" name="dateofregistration">
+    </div>
+
+
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>add-vaccine-registration works!</p>
+
+<h3>New Vaccine Registration</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label >Mobile No</label>
+      <input type="text" class="form-control" id="mobileno" required  #mobileno="ngModel" [(ngModel)]="registration.mobileno" name="mobileno">
+    </div>
+    <div class="form-group">
+      <label > Date of Registration</label>
+      <input type="date" class="form-control" id="dateofregistration" #dateofregistration="ngModel" required [(ngModel)]="registration.dateofregistration" name="dateofregistration">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+
+<div [hidden]="!submitted">
+<h4>Success!</h4>
+</div>
+
+#vaccineName="ngModel" -->

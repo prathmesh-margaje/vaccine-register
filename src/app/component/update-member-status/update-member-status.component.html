@@ -1,0 +1,65 @@
+<p>update-member-status works!</p>
+
+<h2 class="text-center">Update Member Status </h2>
+<div [hidden]="submitted">
+    <form #createForm="ngForm" (ngSubmit)="onSubmit()" novalidate class="container col-sm-6">
+        <div class="form-group">
+            <p>
+                <label for="dose1status">Dose 1 status</label>
+                <input type="text" class="form-control" id="dose1status" required #dose1status="ngModel"
+                    [(ngModel)]="memberStatus.dose1status" name="dose1status">
+            </p>
+            <div *ngIf="!dose1status?.valid && (dose1status?.dirty || dose1status?.touched)" class="required">
+                <div *ngIf="dose1status.errors?.['required']">
+                    dose1status is Required.
+                </div>
+            </div>
+        </div>
+        <p>
+            <label for="dose2status">Dose 2 status</label>
+            <input type="text" class="form-control" id="dose2status" required #dose2status="ngModel" [(ngModel)]="memberStatus.dose2status"
+                name="dose2status">
+        </p>
+        <div *ngIf="!dose2status?.valid && (dose2status?.dirty || dose2status?.touched)" class="required">
+            <div *ngIf="dose2status.errors?.['required']">
+                Dose status is Required.
+            </div>
+        </div>
+        <p>
+            <label for="gender">Dose 1 date</label>
+            <input type="date" class="form-control" id="gender" required #gender="ngModel" [(ngModel)]="memberStatus.dose1date"
+                name="gender">
+        </p>
+        <div *ngIf="!gender?.valid && (gender?.dirty || gender?.touched)" class="required">
+            <div *ngIf="gender.errors?.['required']">
+                Date is Required.
+            </div>
+        </div>
+        <p>
+            <label for="dose2date">Dose 2 date</label>
+            <input type="date" class="form-control" id="dose2date" required #dose2date="ngModel"
+                [(ngModel)]="memberStatus.dose2date" name="dose2date">
+        </p>
+        <div *ngIf="!dose2date?.valid && (dose2date?.dirty || dose2date?.touched)" class="required">
+            <div *ngIf="dose2date.errors?.['required']">
+                Dose 2 Date is Required.
+            </div>
+        </div>
+        <!-- <p>
+            <label for="idCard">Id Card</label>
+            <input type="text" class="form-control" id="idCard" required minlength="1" #idCard="ngModel"
+                [(ngModel)]="memberStatus" name="idCard">
+        </p>
+        <div *ngIf="!idCard?.valid && (idCard?.dirty || idCard?.touched)" class="required">
+            <div *ngIf="idCard.errors?.['required']">
+                Id card is Required.
+            </div>
+            <div *ngIf="idCard.errors?.['minlength']">
+                Id card Minimum Length is {{idCard.errors?.['minlength']?.requiredLength}}.
+            </div>
+        </div> -->
+        <p>
+            <button class="btn btn-success" type="Submit" [disabled]="!createForm.valid">Submit</button>
+        </p>
+    </form>
+</div>

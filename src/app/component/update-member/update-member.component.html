@@ -1,0 +1,214 @@
+<p>update-member works!</p>
+
+
+
+
+<h3>Update Id card</h3>
+<div [hidden]="submitted" style="width: 400px;" >
+  <form (ngSubmit)="onSubmit(createForm)"  #createForm="ngForm"  class="form-group">
+
+    <div >
+      <label >Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="member.name" name="name"
+      required minlength="2" maxlength="15" pattern="^[a-zA-Z ]+$" #name="ngModel">
+    </div>
+    <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="required">
+      <div *ngIf="name.errors?.['required']">
+         Name is Required.
+      </div>
+      <div *ngIf="name.errors?.['minlength']">
+         Name Minimum Length is {{name.errors?.['minlength']?.requiredLength}}.
+      </div>
+      <div *ngIf="name.errors?.['pattern']">
+        Only Characters are allowed.
+      </div>
+    </div>
+
+
+
+
+    <div >
+      <label > Date of Birth</label>
+      <input type="date" class="form-control" id="dob" required [(ngModel)]="member.dob"
+       name="dob" #dob="ngModel" max="2020-12-01" min="1980-12-01">
+    </div>
+    <div *ngIf="!dob?.valid && (dob?.dirty || dob?.touched)" class="required">
+      <div *ngIf="dob.errors?.['required']">
+         date of birth is Required.
+      </div>
+    </div>
+
+
+
+    <!-- <div class="form-group" >
+      <label >gender</label>
+      <input type="text" class="form-control" id="gender" required [(ngModel)]="member.gender" name="gender">
+      <label for="male"> Male</label>
+      <input type="radio" class="form-control" id="gender" required [(ngModel)]="member.gender" name="gender" >
+      <label for="female"> female</label>
+      <input type="radio" class="form-control" id="gender" required [(ngModel)]="member.gender" name="gender" > -->
+  
+    <div >
+      <label for="name">Gender </label>
+      <select  type="text" class="form-control" id="gender" required [(ngModel)]="member.gender"
+      #gender="ngModel" name="gender">      
+     <option value = "">---select---</option>
+      <option value = "Male"> Male </option>
+      <option value = "Female"> Female </option>
+      <option value = "Other"> Other </option>
+    </select>
+
+  </div>
+  <div *ngIf="!gender?.valid && (gender?.dirty || gender?.touched)" class="required">
+    <div *ngIf="gender.errors?.['required']" >
+      gender is Required.
+    </div>
+  </div>
+
+
+
+    
+
+    
+     <div >
+      <label >city</label>
+      <input type="text" class="form-control" id="city" required [(ngModel)]="member.city" 
+      #city="ngModel" name="city" pattern="^[a-zA-Z ]+$" >
+    </div>
+  
+  <div *ngIf="!city?.valid && (city?.dirty || city?.touched)" class="required">
+    <div *ngIf="city.errors?.['required']">
+      City is Required.
+    </div>
+    <div *ngIf="city.errors?.['pattern']">
+      Only Characters are allowed.
+    </div>
+  </div>
+
+
+     <!-- <div class="form-group">
+      <label >state</label>
+      <input type="text" class="form-control" id="state" required [(ngModel)]="member.state" name="state">
+    </div> -->
+
+    <div >
+      <label for="name">State </label>
+      <select  type="text" class="form-control" id="state" required [(ngModel)]="member.state" 
+      #state = "ngModel" name="state">
+      <option value = "">---select---</option>
+      <option value = "Maharastra"> Maharastra </option>
+      <option value = "Bihar"> Bihar</option>
+      <option value = "Tamilnadu"> Tamilnadu </option>
+      <option value = "Goa"> Goa </option>
+      <option value = "A P"> A P</option>
+      <option value = "M P"> M P </option>
+    </select>
+    </div>
+    <div *ngIf="!state?.valid && (state?.dirty || state?.touched)" class="required">
+      <div *ngIf="state.errors?.['required']" >
+        State is Required.
+      </div>
+    </div>
+
+
+     <div>
+      <label >pincode</label>
+      <input type="text" class="form-control" id="pincode" required [(ngModel)]="member.pincode"
+      #pincode="ngModel" name="pincode"  pattern="^[0-9]*$" minlength="3" maxlength="8">
+    </div>
+    <div *ngIf="!pincode?.valid && (pincode?.dirty || pincode?.touched)" class="required">
+      <div *ngIf="pincode.errors?.['required']"  >
+        Pincode is Required.
+      </div>
+      <div *ngIf="pincode.errors?.['minlength']">
+        pincode Minimum Length is {{pincode.errors?.['minlength']?.requiredLength}}.
+     </div>
+     <div *ngIf="pincode.errors?.['pattern']">
+       Only Number are allowed.
+     </div>
+    </div>
+
+
+     <div >
+      <label >Aadhar No</label>
+      <input type="text" class="form-control" id="adharNo" required [(ngModel)]="member.adharNo"
+      #adharNo="ngModel" name="adharNo" minlength="12" maxlength="12" pattern="^[0-9]*$">
+    </div>
+    <div *ngIf="!adharNo?.valid && (adharNo?.dirty || adharNo?.touched)" class="required">
+      <div *ngIf="adharNo.errors?.['required']" >
+        Aadhar No is Required.
+      </div>
+      <div *ngIf="adharNo.errors?.['minlength']">
+        Name Minimum Length is {{adharNo.errors?.['minlength']?.requiredLength}}.
+     </div>
+     <div *ngIf="adharNo.errors?.['pattern']">
+       Only Number are allowed.
+     </div>
+    </div>
+
+
+     <!-- <div class="form-group">
+      <label >Pan No</label>
+      <input type="text" class="form-control" id="panNo" required [(ngModel)]="member.panNo" name="panNo">
+    </div> -->
+
+    <button type="submit" class="btn btn-success" [disabled]="!createForm.valid">Submit</button>
+
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div>
+
+<!-- <h3>update Id card</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label >Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="member.name" name="name">
+    </div>
+    <div class="form-group">
+      <label > Date of Birth</label>
+      <input type="date" class="form-control" id="dob" required [(ngModel)]="member.dob" name="dob">
+    </div>
+    <div class="form-group">
+      <label >gender</label>
+      <input type="text" class="form-control" id="gender" required [(ngModel)]="member.gender" name="gender">
+    </div>
+
+ 
+
+     <div class="form-group">
+      <label >city</label>
+      <input type="text" class="form-control" id="city" required [(ngModel)]="member.city" name="city">
+    </div>
+
+     <div class="form-group">
+      <label >state</label>
+      <input type="text" class="form-control" id="state" required [(ngModel)]="member.state" name="state">
+    </div>
+
+     <div class="form-group">
+      <label >pincode</label>
+      <input type="text" class="form-control" id="pincode" required [(ngModel)]="member.pincode" name="pincode">
+    </div>
+
+     <div class="form-group">
+      <label >Adhar No</label>
+      <input type="text" class="form-control" id="adharNo" required [(ngModel)]="member.adharNo" name="adharNo">
+    </div>
+
+     <div class="form-group">
+      <label >Pan No</label>
+      <input type="text" class="form-control" id="panNo" required [(ngModel)]="idcard.panNo" name="panNo">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Success!</h4>
+</div> -->
